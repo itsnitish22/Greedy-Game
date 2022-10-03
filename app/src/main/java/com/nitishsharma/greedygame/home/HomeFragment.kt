@@ -117,10 +117,13 @@ class HomeFragment : Fragment() {
                     position: Int,
                     sendToDB: Boolean
                 ) {
-                    if (sendToDB)
+                    if (sendToDB) {
+                        viewModel.sendNewsToDB(article, position+1)
                         Toast.makeText(activity, "Saved", Toast.LENGTH_SHORT).show()
-                    else
+                    } else {
+                        viewModel.deleteNews(article, position+1)
                         Toast.makeText(activity, "Unsaved", Toast.LENGTH_SHORT).show()
+                    }
                 }
             })
         binding.recyclerview.adapter = adapter
