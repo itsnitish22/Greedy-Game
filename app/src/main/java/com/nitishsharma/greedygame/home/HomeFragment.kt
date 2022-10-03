@@ -112,8 +112,15 @@ class HomeFragment : Fragment() {
 
         },
             object : HomeFragmentAdapter.ItemBookmarkClickListener {
-                override fun onBookmarkClickListener(article: Articles, position: Int) {
-                    Toast.makeText(activity, "Saved", Toast.LENGTH_SHORT).show()
+                override fun onBookmarkClickListener(
+                    article: Articles,
+                    position: Int,
+                    sendToDB: Boolean
+                ) {
+                    if (sendToDB)
+                        Toast.makeText(activity, "Saved", Toast.LENGTH_SHORT).show()
+                    else
+                        Toast.makeText(activity, "Unsaved", Toast.LENGTH_SHORT).show()
                 }
             })
         binding.recyclerview.adapter = adapter

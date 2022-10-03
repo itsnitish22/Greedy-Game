@@ -1,5 +1,6 @@
 package com.nitishsharma.greedygame.home
 
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +34,7 @@ class HomeFragmentAdapter(
     }
 
     interface ItemBookmarkClickListener {
-        fun onBookmarkClickListener(article: Articles, position: Int)
+        fun onBookmarkClickListener(article: Articles, position: Int, sendToDB: Boolean)
     }
 
     // view holder
@@ -66,8 +67,16 @@ class HomeFragmentAdapter(
         }
 
         holder.bookmark.setOnClickListener {
-            holder.bookmark.setImageResource(R.drawable.ic_bookmark)
-            bookmarkClickListener.onBookmarkClickListener(news[position], position)
+            val res: Resources = holder.itemView.context.resources
+            if (holder.bookmark.drawable.constantState ==
+                res.getDrawable(R.drawable.ic_bookmark).constantState
+            ) {
+                holder.bookmark.setImageResource(R.drawable.ic_bookmark_grey)
+                bookmarkClickListener.onBookmarkClickListener(news[position], position, false)
+            } else {
+                holder.bookmark.setImageResource(R.drawable.ic_bookmark)
+                bookmarkClickListener.onBookmarkClickListener(news[position], position, true)
+            }
         }
     }
 
