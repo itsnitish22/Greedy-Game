@@ -25,6 +25,7 @@ class DetailedNews : Fragment() {
         showInFragment(args.article)
         Log.i("DetailedNews", args.article.toString())
 
+        //press on back arrow
         binding.backarrow.setOnClickListener {
             findNavController().navigate(DetailedNewsDirections.actionDetailedNewsToHomeFragment())
         }
@@ -32,6 +33,7 @@ class DetailedNews : Fragment() {
         return binding.root
     }
 
+    //showing news on the screen
     private fun showInFragment(article: Articles?) {
         if (article != null) {
             binding.savButton.clipToOutline = true

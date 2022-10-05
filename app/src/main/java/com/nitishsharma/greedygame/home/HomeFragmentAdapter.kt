@@ -21,23 +21,27 @@ class HomeFragmentAdapter(
 ) :
     RecyclerView.Adapter<HomeFragmentAdapter.ViewHolder>() {
 
+    //on item click
     interface ItemClickListener {
         fun onItemClick(article: Articles, position: Int)
     }
 
+    //on read button click
     interface ItemReadButtonClickListener {
         fun onItemReadClick(article: Articles, position: Int)
     }
 
+    //on click of save button
     interface ItemSaveButtonClickListener {
         fun onItemSaveClick(article: Articles, position: Int)
     }
 
+    //on click of bookmar button
     interface ItemBookmarkClickListener {
         fun onBookmarkClickListener(article: Articles, position: Int, sendToDB: Boolean)
     }
 
-    // view holder
+    //view holder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_news, parent, false)
@@ -66,9 +70,6 @@ class HomeFragmentAdapter(
         holder.saveButton.setOnClickListener {
             saveClickListener.onItemSaveClick(news[position], position)
         }
-
-//        if (selectedIndexes?.contains(position) == true)
-//            holder.bookmark.setImageResource(R.drawable.ic_bookmark)
 
         holder.bookmark.setOnClickListener {
             val res: Resources = holder.itemView.context.resources

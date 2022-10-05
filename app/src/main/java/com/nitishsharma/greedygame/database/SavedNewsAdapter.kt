@@ -13,12 +13,14 @@ import com.nitishsharma.greedygame.R
 class SavedNewsAdapter(private val news: List<NewsEntity>?) :
     RecyclerView.Adapter<SavedNewsAdapter.ViewHolder>() {
 
+    //onCreate
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_saved_news, parent, false)
         return ViewHolder(view)
     }
 
+    //binding and setting data
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val itemsViewModel = news?.get(position)
 
@@ -29,11 +31,13 @@ class SavedNewsAdapter(private val news: List<NewsEntity>?) :
         Glide.with(holder.itemView.context).load(itemsViewModel?.urlToImage).into(holder.newsImage)
     }
 
+    //item count
     override fun getItemCount(): Int {
         Log.i("Saved Adapter", news?.size.toString())
         return news?.size ?: 0
     }
 
+    //viewholder
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val title: TextView = itemView.findViewById(R.id.title)
         val description: TextView = itemView.findViewById(R.id.shortDescription)

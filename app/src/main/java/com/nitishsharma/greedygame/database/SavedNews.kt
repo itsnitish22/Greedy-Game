@@ -29,18 +29,21 @@ class SavedNews : Fragment() {
         binding.recyclerview.layoutManager =
             LinearLayoutManager(requireContext())
 
+        //getting list of saved news
         viewModel.newsListFromDB?.observe(requireActivity()) { it ->
             Log.i("Saved", it.toString())
             binding.progressBar.visibility = View.VISIBLE
             sendToRecyclerView(it)
         }
 
+        //handling press on back arrow
         binding.backarrow.setOnClickListener {
             findNavController().navigate(SavedNewsDirections.actionSavedNewsToHomeFragment())
         }
         return binding.root
     }
 
+    //send data to recycler view
     private fun sendToRecyclerView(it: List<NewsEntity>?) {
         newsList.clear()
         Log.i("Saved", it.toString())

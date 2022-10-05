@@ -37,11 +37,13 @@ class HomeFragment : Fragment() {
         binding.recyclerview.layoutManager =
             LinearLayoutManager(requireContext()) //setting recycler view
 
+        //observing instance state
         val selectedNews = savedInstanceState?.getIntegerArrayList("saved")
         if (selectedNews?.isNotEmpty() == true)
             Log.i("HomeFrag", selectedNews.toString())
 
 
+        //getting news from api
         viewModel.getNews("tesla")
         binding.progressBar.visibility = View.VISIBLE
 
@@ -49,6 +51,7 @@ class HomeFragment : Fragment() {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSavedNews())
         }
 
+        //search view
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             private val coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.Main)
             private var searchJob: Job? = null
@@ -61,6 +64,7 @@ class HomeFragment : Fragment() {
                 return false
             }
 
+            //changing text and setting default search to tesla
             override fun onQueryTextChange(newText: String?): Boolean {
                 searchJob?.cancel()
                 searchJob = coroutineScope.launch {
@@ -80,9 +84,9 @@ class HomeFragment : Fragment() {
             }
         })
 
+        //observing news changes from api
         viewModel.receivedNews.observe(requireActivity()) { news ->
             putNewsIntoArray(news)
-//            Log.i("HomeFragment", news.toString())
         }
         return binding.root
     }
@@ -92,7 +96,6 @@ class HomeFragment : Fragment() {
         newsList.clear()
         if (news != null) {
             for (i in 0 until news.articles.size) {
-//                Log.i("NewsFragment", news.articles[i].toString())
                 newsList.add(news.articles[i])
             }
             showInRecyclerView(newsList)
@@ -148,6 +151,7 @@ class HomeFragment : Fragment() {
         binding.progressBar.visibility = View.GONE
     }
 
+    //saving instance state
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         Log.i("HomeFrag", savedNewsBookmarkIndex.toString())
