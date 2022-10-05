@@ -20,6 +20,16 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.18" />
 
+    <ImageView
+        android:id="@+id/backarrow"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/con1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back" />
+
     <SearchView
         android:id="@+id/searches"
         android:layout_width="0dp"

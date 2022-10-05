@@ -52,6 +52,7 @@ class HomeFragmentAdapter(
         holder.publishedAt.text = itemsViewModel.publishedAt
         holder.title.text = itemsViewModel.title
         holder.description.text = itemsViewModel.description
+        holder.newsImage.clipToOutline = true
         Glide.with(holder.itemView.context).load(itemsViewModel.urlToImage).into(holder.newsImage)
 
         holder.itemView.setOnClickListener {

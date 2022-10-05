@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Own-Work/Android/Greedy-Game/app/src/main/res/drawable/ic_back.xml" value="0.1505" />
+        <entry key="..\:/Own-Work/Android/Greedy-Game/app/src/main/res/drawable/ic_back_white.xml" value="0.1505" />
         <entry key="..\:/Own-Work/Android/Greedy-Game/app/src/main/res/drawable/ic_bookmark.xml" value="0.151" />
-        <entry key="..\:/Own-Work/Android/Greedy-Game/app/src/main/res/layout/fragment_detailed_news.xml" value="0.16983695652173914" />
+        <entry key="..\:/Own-Work/Android/Greedy-Game/app/src/main/res/drawable/round_image.xml" value="0.1505" />
+        <entry key="..\:/Own-Work/Android/Greedy-Game/app/src/main/res/layout/fragment_detailed_news.xml" value="0.22" />
         <entry key="..\:/Own-Work/Android/Greedy-Game/app/src/main/res/layout/fragment_home.xml" value="0.17074275362318841" />
         <entry key="..\:/Own-Work/Android/Greedy-Game/app/src/main/res/layout/fragment_saved_news.xml" value="0.22" />
         <entry key="..\:/Own-Work/Android/Greedy-Game/app/src/main/res/layout/item_news.xml" value="0.16983695652173914" />

@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nitishsharma.greedygame.databinding.FragmentSavedNewsBinding
@@ -29,11 +29,15 @@ class SavedNews : Fragment() {
         binding.recyclerview.layoutManager =
             LinearLayoutManager(requireContext())
 
-        viewModel.newsListFromDB?.observe(requireActivity(), Observer { it ->
+        viewModel.newsListFromDB?.observe(requireActivity()) { it ->
             Log.i("Saved", it.toString())
             binding.progressBar.visibility = View.VISIBLE
             sendToRecyclerView(it)
-        })
+        }
+
+        binding.backarrow.setOnClickListener {
+            findNavController().navigate(SavedNewsDirections.actionSavedNewsToHomeFragment())
+        }
         return binding.root
     }
 
