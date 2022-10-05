@@ -4,10 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F7FC"
-    tools:context=".home.HomeFragment">
-
-    <!--    #eeeef8-->
+    tools:context=".database.SavedNews">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/con1"
@@ -23,13 +20,6 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.18" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/con3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.80" />
-
     <SearchView
         android:id="@+id/searches"
         android:layout_width="0dp"
@@ -44,27 +34,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/con1" />
 
-    <ImageView
-        android:id="@+id/bookmarks"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_bookmark"
-        app:layout_constraintBottom_toBottomOf="@id/con1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/con3"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:fontFamily="@font/italianno"
-        android:text="NewsBreeze"
-        android:textColor="@color/black"
-        android:textSize="50dp"
+        android:text="Saved"
+        android:textColor="#94C87F"
+        android:textSize="38dp"
         app:layout_constraintBottom_toTopOf="@+id/con1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -88,6 +66,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_detailedNews"
             app:destination="@id/detailedNews" />
+        <action
+            android:id="@+id/action_homeFragment_to_savedNews"
+            app:destination="@id/savedNews" />
     </fragment>
     <fragment
         android:id="@+id/detailedNews"
@@ -24,5 +27,20 @@
             android:defaultValue="@null"
             app:argType="com.nitishsharma.greedygame.api.models.Articles"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_detailedNews_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_detailedNews_to_savedNews"
+            app:destination="@id/savedNews" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedNews"
+        android:name="com.nitishsharma.greedygame.database.SavedNews"
+        android:label="fragment_saved_news"
+        tools:layout="@layout/fragment_saved_news">
+        <action
+            android:id="@+id/action_savedNews_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

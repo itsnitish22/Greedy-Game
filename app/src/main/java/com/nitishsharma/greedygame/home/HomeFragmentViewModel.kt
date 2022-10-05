@@ -23,9 +23,9 @@ class HomeFragmentViewModel(app: Application) : AndroidViewModel(app) {
     val receivedNews: LiveData<News>
         get() = _receivedNews
 
-    private val _newsFromDB: MutableLiveData<NewsEntity> = MutableLiveData()
-    val newsFromDB: LiveData<NewsEntity>
-        get() = _newsFromDB
+//    private val _newsFromDB: MutableLiveData<NewsEntity> = MutableLiveData()
+//    val newsFromDB: LiveData<NewsEntity>
+//        get() = _newsFromDB
 
     //function call to GET data from API
     fun getNews(query: String) {
@@ -55,11 +55,7 @@ class HomeFragmentViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     //getAllNewsFromDB
-    val newsListFromDB = viewModelScope.launch {
-        withContext(Dispatchers.IO) {
-            database?.newsDao()?.getAll()
-        }
-    }
+    val newsListFromDB = database?.newsDao()?.getAll()
 
     fun deleteNews(article: Articles, position: Int) {
         viewModelScope.launch {

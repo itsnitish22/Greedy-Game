@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="2dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="2dp"
+    app:cardCornerRadius="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/newsImage"
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_bookmark" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/queens_bold"
+                    android:lineSpacingExtra="5dp"
+                    android:maxLines="2"
+                    android:textSize="15sp"
+                    tools:text="Title of News" />
+
+                <TextView
+                    android:id="@+id/shortDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/queens"
+                    android:lineSpacingExtra="4dp"
+                    android:maxLines="2"
+                    android:textSize="12sp"
+                    tools:text="This won't work. The documentation states: If set, causes words that are longer than the view is wide to be ellipsized instead of broken in the middle. In my test this causes a four line text view to stop displaying Text after the second line because at the end of the second line a word should be broken in the middle. Ellipsize won't put dots on the end of the textview after the third line." />
+
+                <TextView
+                    android:id="@+id/publishedAt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/queens"
+                    android:textSize="8sp"
+                    tools:text="Published At" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--        <ImageView-->
+        <!--            android:id="@+id/newsImage"-->
+        <!--            android:layout_width="140dp"-->
+        <!--            android:layout_height="150dp"-->
+        <!--            android:layout_marginLeft="16dp"-->
+        <!--            android:layout_marginRight="16dp"-->
+        <!--            android:scaleType="fitXY"-->
+        <!--            android:src="@drawable/ic_bookmark" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/title"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_below="@+id/newsImage"-->
+        <!--            android:layout_alignParentStart="true"-->
+        <!--            android:layout_marginLeft="16dp"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:layout_marginRight="16dp"-->
+        <!--            android:ellipsize="end"-->
+        <!--            android:fontFamily="@font/queens_bold"-->
+        <!--            android:maxLines="2"-->
+        <!--            android:textSize="30sp"-->
+        <!--            tools:text="Title of News" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/shortDescription"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_below="@+id/title"-->
+        <!--            android:layout_alignParentStart="true"-->
+        <!--            android:layout_marginStart="16dp"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:layout_marginEnd="16dp"-->
+        <!--            android:ellipsize="end"-->
+        <!--            android:fontFamily="@font/queens"-->
+        <!--            android:lineSpacingExtra="5dp"-->
+        <!--            android:maxLines="3"-->
+        <!--            android:textSize="15sp"-->
+        <!--            tools:text="This won't work. The documentation states: If set, causes words that are longer than the view is wide to be ellipsized instead of broken in the middle. In my test this causes a four line text view to stop displaying Text after the second line because at the end of the second line a word should be broken in the middle. Ellipsize won't put dots on the end of the textview after the third line." />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/publishedAt"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_below="@+id/shortDescription"-->
+        <!--            android:layout_marginStart="16dp"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:ellipsize="end"-->
+        <!--            android:fontFamily="@font/queens"-->
+        <!--            android:textSize="15sp"-->
+        <!--            tools:text="Published At" />-->
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

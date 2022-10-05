@@ -36,7 +36,13 @@ class HomeFragment : Fragment() {
         binding.recyclerview.layoutManager =
             LinearLayoutManager(requireContext()) //setting recycler view
 
+
         viewModel.getNews("tesla")
+        binding.progressBar.visibility = View.VISIBLE
+
+        binding.bookmarks.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSavedNews())
+        }
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             private val coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.Main)
@@ -45,6 +51,7 @@ class HomeFragment : Fragment() {
                 if (query != null) {
                     search = query
                     viewModel.getNews(query)
+                    binding.progressBar.visibility = View.VISIBLE
                 }
                 return false
             }
@@ -56,9 +63,11 @@ class HomeFragment : Fragment() {
                         delay(1000)
                         if (it.isEmpty()) {
                             viewModel.getNews("tesla")
+                            binding.progressBar.visibility = View.VISIBLE
                         } else {
                             search = it
                             viewModel.getNews(it)
+                            binding.progressBar.visibility = View.VISIBLE
                         }
                     }
                 }
@@ -107,6 +116,7 @@ class HomeFragment : Fragment() {
 
         }, object : HomeFragmentAdapter.ItemSaveButtonClickListener {
             override fun onItemSaveClick(article: Articles, position: Int) {
+                viewModel.sendNewsToDB(article, position + 1)
                 Toast.makeText(activity, "Saved", Toast.LENGTH_SHORT).show()
             }
 
@@ -118,14 +128,15 @@ class HomeFragment : Fragment() {
                     sendToDB: Boolean
                 ) {
                     if (sendToDB) {
-                        viewModel.sendNewsToDB(article, position+1)
+                        viewModel.sendNewsToDB(article, position + 1)
                         Toast.makeText(activity, "Saved", Toast.LENGTH_SHORT).show()
                     } else {
-                        viewModel.deleteNews(article, position+1)
+                        viewModel.deleteNews(article, position + 1)
                         Toast.makeText(activity, "Unsaved", Toast.LENGTH_SHORT).show()
                     }
                 }
             })
         binding.recyclerview.adapter = adapter
+        binding.progressBar.visibility = View.GONE
     }
 }

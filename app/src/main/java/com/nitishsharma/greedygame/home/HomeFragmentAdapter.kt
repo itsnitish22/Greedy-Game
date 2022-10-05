@@ -66,6 +66,9 @@ class HomeFragmentAdapter(
             saveClickListener.onItemSaveClick(news[position], position)
         }
 
+//        if (selectedIndexes?.contains(position) == true)
+//            holder.bookmark.setImageResource(R.drawable.ic_bookmark)
+
         holder.bookmark.setOnClickListener {
             val res: Resources = holder.itemView.context.resources
             if (holder.bookmark.drawable.constantState ==
