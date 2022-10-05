@@ -33,7 +33,7 @@ class HomeFragmentViewModel(app: Application) : AndroidViewModel(app) {
             val fetchedNews =
                 RetrofitInstance.api.getNews(query, "619d45f4e8ce4f66b8bdd2db720f24f3")
             _receivedNews.value = fetchedNews
-            Log.i("NewsViewModel", fetchedNews.toString())
+//            Log.i("NewsViewModel", fetchedNews.toString())
         }
     }
 

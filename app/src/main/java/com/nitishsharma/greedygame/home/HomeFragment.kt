@@ -24,6 +24,7 @@ class HomeFragment : Fragment() {
     private val newsList: ArrayList<Articles> = arrayListOf() //news
     private lateinit var searchView: SearchView
     private var search: String = "tesla"
+    private val savedNewsBookmarkIndex: MutableList<Int>? = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +36,10 @@ class HomeFragment : Fragment() {
         searchView = binding.searches
         binding.recyclerview.layoutManager =
             LinearLayoutManager(requireContext()) //setting recycler view
+
+        val selectedNews = savedInstanceState?.getIntegerArrayList("saved")
+        if (selectedNews?.isNotEmpty() == true)
+            Log.i("HomeFrag", selectedNews.toString())
 
 
         viewModel.getNews("tesla")
@@ -77,7 +82,7 @@ class HomeFragment : Fragment() {
 
         viewModel.receivedNews.observe(requireActivity()) { news ->
             putNewsIntoArray(news)
-            Log.i("HomeFragment", news.toString())
+//            Log.i("HomeFragment", news.toString())
         }
         return binding.root
     }
@@ -87,7 +92,7 @@ class HomeFragment : Fragment() {
         newsList.clear()
         if (news != null) {
             for (i in 0 until news.articles.size) {
-                Log.i("NewsFragment", news.articles[i].toString())
+//                Log.i("NewsFragment", news.articles[i].toString())
                 newsList.add(news.articles[i])
             }
             showInRecyclerView(newsList)
@@ -116,6 +121,7 @@ class HomeFragment : Fragment() {
 
         }, object : HomeFragmentAdapter.ItemSaveButtonClickListener {
             override fun onItemSaveClick(article: Articles, position: Int) {
+                savedNewsBookmarkIndex?.add(position + 1)
                 viewModel.sendNewsToDB(article, position + 1)
                 Toast.makeText(activity, "Saved", Toast.LENGTH_SHORT).show()
             }
@@ -128,9 +134,11 @@ class HomeFragment : Fragment() {
                     sendToDB: Boolean
                 ) {
                     if (sendToDB) {
+                        savedNewsBookmarkIndex?.add(position + 1)
                         viewModel.sendNewsToDB(article, position + 1)
                         Toast.makeText(activity, "Saved", Toast.LENGTH_SHORT).show()
                     } else {
+                        savedNewsBookmarkIndex?.remove(position + 1)
                         viewModel.deleteNews(article, position + 1)
                         Toast.makeText(activity, "Unsaved", Toast.LENGTH_SHORT).show()
                     }
@@ -138,5 +146,15 @@ class HomeFragment : Fragment() {
             })
         binding.recyclerview.adapter = adapter
         binding.progressBar.visibility = View.GONE
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.i("HomeFrag", savedNewsBookmarkIndex.toString())
+        if (savedNewsBookmarkIndex?.isNotEmpty() == true)
+            outState.putIntegerArrayList(
+                "saved",
+                savedNewsBookmarkIndex as java.util.ArrayList<Int>?
+            )
     }
 }
